@@ -1,0 +1,46 @@
+name: ansible-kz6fittycent # check to see if it's available
+version: git # check versioning
+#adopt-info: ansible-kz6fittycent
+summary: Ansible is a radically simple IT automation system. # 79 char long summary
+description: |
+    Ansible is a radically simple IT automation system. 
+    It handles configuration-management, application deployment, cloud provisioning, 
+    ad-hoc task-execution, and multinode orchestration -- including trivializing things 
+    like zero-downtime rolling updates with load balancers.
+    
+grade: stable 
+confinement: devmode 
+base: core18
+
+architectures:
+- build-on: amd64
+
+apps:
+  ansible-kz6fittycent:
+    command: ansible
+    environment: 
+      LC_ALL: C.UTF-8
+    plugs:
+      - home
+      - network
+      - personal-files
+      - system-files
+     
+parts: 
+  ansible-kz6fittycent:
+    source: https://github.com/ansible/ansible
+    source-type: git
+    plugin: python
+    python-version: python3
+    requirements: requirements.txt
+    
+    build-packages:
+      - python3
+      
+    stage-packages:
+      - python3
+      - python3-jinja2
+      - python3-yaml
+      - python3-paramiko
+      - python3-setuptools
+      - python3-cryptography

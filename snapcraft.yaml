@@ -1,7 +1,7 @@
-name: ansible-kz6fittycent # check to see if it's available
-version: git # check versioning
-#adopt-info: ansible-kz6fittycent
-summary: Ansible is a radically simple IT automation system. # 79 char long summary
+name: ansible-kz6fittycent 
+#version: git 
+adopt-info: ansible-kz6fittycent
+summary: Ansible is a radically simple IT automation system.
 description: |
     Ansible is a radically simple IT automation system. 
     It handles configuration-management, application deployment, cloud provisioning, 
@@ -32,8 +32,11 @@ parts:
     source-type: git
     plugin: python
     python-version: python3
-    requirements: requirements.txt
-    
+#    requirements: requirements.txt
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "$(git describe --tags | sed 's/^v//')"
+      
     build-packages:
       - python3
       

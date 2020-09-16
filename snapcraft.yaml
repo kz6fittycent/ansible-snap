@@ -1,6 +1,5 @@
 name: ansible-kz6fittycent 
-version: git 
-#adopt-info: ansible-kz6fittycent
+adopt-info: ansible-kz6fittycent
 summary: Ansible is a radically simple IT automation system.
 description: |
     Ansible is a radically simple IT automation system. 
@@ -15,16 +14,62 @@ base: core18
 architectures:
 - build-on: amd64
 
+plugs:
+  ansible-kz6fittycent:
+    interface: personal-files
+    write:
+      - $HOME/.ansible/roles/
+      - $SNAP_USER_COMMON
+      - $SNAP_USER_CURRENT
+    read:
+      - $HOME/.ansible/roles/
+      - $SNAP_USER_COMMON
+      - $SNAP_USER_CURRENT
+  ansible-kz6fittycent-vault:
+    interface: personal-files
+    read:
+      - $SNAP_USER_COMMON
+      - $SNAP_USER_CURRENT
+  ansible-kz6fittycent-galaxy:
+    interface: personal-files
+    read:
+      - $HOME/.ansible/roles/
+      - $SNAP_USER_COMMON
+      - $SNAP_USER_CURRENT       
+    write:
+      - $HOME/.ansible/roles/
+      - $SNAP_USER_COMMON
+      - $SNAP_USER_CURRENT      
+
 apps:
   ansible-kz6fittycent:
-    command: ansible
+    command: bin/ansible
+  ansible-kz6fittycent-playbook:
+    command: bin/ansible-playbook
+  ansible-kz6fittycent-galaxy:
+    command: bin/ansible-galaxy
+  ansible-kz6fittycent-config:
+    command: bin/ansible-config
+  ansible-kz6fittycent-connection:
+    command: bin/ansible-connection
+  ansible-kz6fittycent-console:
+    command: bin/ansible-console
+  ansible-kz6fittycent-doc:
+    command: bin/ansible-doc
+  ansible-kz6fittycent-inventory:
+    command: bin/ansible-inventory
+  ansible-kz6fittycent-pull:
+    command: bin/ansible-pull
+  ansible-kz6fittycent-vault:
+    command: bin/ansible-vault  
     environment: 
       LC_ALL: C.UTF-8
     plugs:
       - home
       - network
-      - personal-files
+      - mount-observe
       - system-files
+      - personal-files
      
 parts: 
   ansible-kz6fittycent:
@@ -32,7 +77,11 @@ parts:
     source-type: git
     plugin: python
     python-version: python3
-#    requirements: requirements.txt
+    requirements: [requirements.txt]
+    
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
       
     build-packages:
       - python3

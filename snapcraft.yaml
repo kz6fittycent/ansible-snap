@@ -19,26 +19,26 @@ plugs:
   ansible:
     interface: personal-files
     write:
-      - $HOME/.ansible/roles/
+      - $HOME/.ansible/roles
       - $SNAP_USER_COMMON
       - $SNAP_USER_CURRENT
     read:
-      - $HOME/.ansible/roles/
-      - $SNAP_USER_COMMON
-      - $SNAP_USER_CURRENT
-  ansible:
-    interface: personal-files
-    read:
+      - $HOME/.ansible/roles
       - $SNAP_USER_COMMON
       - $SNAP_USER_CURRENT
   ansible:
     interface: personal-files
     read:
-      - $HOME/.ansible/roles/
+      - $SNAP_USER_COMMON
+      - $SNAP_USER_CURRENT
+  ansible:
+    interface: personal-files
+    read:
+      - $HOME/.ansible/roles
       - $SNAP_USER_COMMON
       - $SNAP_USER_CURRENT       
     write:
-      - $HOME/.ansible/roles/
+      - $HOME/.ansible/roles
       - $SNAP_USER_COMMON
       - $SNAP_USER_CURRENT      
 
@@ -77,7 +77,6 @@ parts:
     source: https://github.com/ansible/ansible
     source-type: git
     plugin: python
-    python-version: python3
     requirements: [requirements.txt]
     
     override-pull: |

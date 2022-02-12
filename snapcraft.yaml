@@ -1,5 +1,5 @@
-name: ansible-kz6fittycent 
-adopt-info: ansible-kz6fittycent
+name: ansible
+adopt-info: ansible
 summary: Ansible is a radically simple IT automation system.
 description: |
     Ansible is a radically simple IT automation system. 
@@ -9,13 +9,14 @@ description: |
     
 grade: stable 
 confinement: devmode 
-base: core18
+base: core20
 
 architectures:
-- build-on: amd64
+  - build-on: amd64
+    run-on: [amd64, armhf, arm64, ppc64el, s390x]   
 
 plugs:
-  ansible-kz6fittycent:
+  ansible:
     interface: personal-files
     write:
       - $HOME/.ansible/roles/
@@ -25,12 +26,12 @@ plugs:
       - $HOME/.ansible/roles/
       - $SNAP_USER_COMMON
       - $SNAP_USER_CURRENT
-  ansible-kz6fittycent-vault:
+  ansible:
     interface: personal-files
     read:
       - $SNAP_USER_COMMON
       - $SNAP_USER_CURRENT
-  ansible-kz6fittycent-galaxy:
+  ansible:
     interface: personal-files
     read:
       - $HOME/.ansible/roles/
@@ -42,25 +43,25 @@ plugs:
       - $SNAP_USER_CURRENT      
 
 apps:
-  ansible-kz6fittycent:
+  ansible:
     command: bin/ansible
-  ansible-kz6fittycent-playbook:
+  ansible:
     command: bin/ansible-playbook
-  ansible-kz6fittycent-galaxy:
+  ansible-galaxy:
     command: bin/ansible-galaxy
-  ansible-kz6fittycent-config:
+  ansible-config:
     command: bin/ansible-config
-  ansible-kz6fittycent-connection:
+  ansible-connection:
     command: bin/ansible-connection
-  ansible-kz6fittycent-console:
+  ansible-console:
     command: bin/ansible-console
-  ansible-kz6fittycent-doc:
+  ansible-doc:
     command: bin/ansible-doc
-  ansible-kz6fittycent-inventory:
+  ansible-inventory:
     command: bin/ansible-inventory
-  ansible-kz6fittycent-pull:
+  ansible-pull:
     command: bin/ansible-pull
-  ansible-kz6fittycent-vault:
+  ansible-vault:
     command: bin/ansible-vault  
     environment: 
       LC_ALL: C.UTF-8
@@ -72,7 +73,7 @@ apps:
       - personal-files
      
 parts: 
-  ansible-kz6fittycent:
+  ansible:
     source: https://github.com/ansible/ansible
     source-type: git
     plugin: python

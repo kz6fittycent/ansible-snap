@@ -74,7 +74,7 @@ apps:
      
 parts: 
   ansible:
-    source: https://github.com/ansible/ansible
+    source: https://github.com/ansible/ansible/tree/stable-2.12
     source-type: git
     plugin: python
     requirements: [requirements.txt]

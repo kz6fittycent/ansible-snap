@@ -20,27 +20,27 @@ plugs:
     interface: personal-files
     write:
       - $HOME/.ansible/roles
-      - $SNAP_USER_COMMON
-      - $SNAP_USER_CURRENT
+      - $HOME/$SNAP_USER_COMMON
+      - $HOME/$SNAP_USER_CURRENT
     read:
       - $HOME/.ansible/roles
-      - $SNAP_USER_COMMON
-      - $SNAP_USER_CURRENT
+      - $HOME/$SNAP_USER_COMMON
+      - $HOME/$SNAP_USER_CURRENT
   ansible:
     interface: personal-files
     read:
-      - $SNAP_USER_COMMON
-      - $SNAP_USER_CURRENT
+      - $HOME/$SNAP_USER_COMMON
+      - $HOME/$SNAP_USER_CURRENT
   ansible:
     interface: personal-files
     read:
       - $HOME/.ansible/roles
-      - $SNAP_USER_COMMON
-      - $SNAP_USER_CURRENT       
+      - $HOME/$SNAP_USER_COMMON
+      - $HOME/$SNAP_USER_CURRENT       
     write:
       - $HOME/.ansible/roles
-      - $SNAP_USER_COMMON
-      - $SNAP_USER_CURRENT      
+      - $HOME/$SNAP_USER_COMMON
+      - $HOME/$SNAP_USER_CURRENT      
 
 apps:
   ansible:

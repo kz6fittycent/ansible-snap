@@ -95,3 +95,4 @@ parts:
       - python3-paramiko
       - python3-setuptools
       - python3-cryptography
+      - python3-jmespath

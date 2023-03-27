@@ -70,7 +70,7 @@ apps:
      
 parts: 
   ansible:
-    source: https://github.com/ansible/
+    source: https://github.com/ansible/ansible
     source-type: git
     source-branch: stable-2.14
     plugin: python

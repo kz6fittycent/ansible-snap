@@ -8,12 +8,8 @@ description: |
     like zero-downtime rolling updates with load balancers.
     
 grade: stable 
-confinement: devmode 
+confinement: strict
 base: core20
-
-architectures:
-  - build-on: amd64
-    run-on: [amd64, armhf, arm64, ppc64el, s390x]   
 
 plugs:
   ansible:
@@ -45,24 +41,24 @@ plugs:
 apps:
   ansible:
     command: bin/ansible
-  ansible:
-    command: bin/ansible-playbook
-  ansible-galaxy:
-    command: bin/ansible-galaxy
   ansible-config:
     command: bin/ansible-config
-  ansible-connection:
-    command: bin/ansible-connection
   ansible-console:
     command: bin/ansible-console
   ansible-doc:
     command: bin/ansible-doc
+  ansible-galaxy:
+    command: bin/ansible-galaxy
   ansible-inventory:
     command: bin/ansible-inventory
+  ansible-playbook:
+    command: bin/ansible-playbook
   ansible-pull:
     command: bin/ansible-pull
+  ansible-test:
+    command: bin/ansible-test
   ansible-vault:
-    command: bin/ansible-vault  
+    command: bin/ansible-vault
     environment: 
       LC_ALL: C.UTF-8
     plugs:
@@ -76,6 +72,7 @@ parts:
   ansible:
     source: https://github.com/ansible/
     source-type: git
+    source-branch: stable-2.14
     plugin: python
     requirements: [requirements.txt]
     

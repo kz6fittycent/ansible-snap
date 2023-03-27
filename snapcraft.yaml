@@ -11,6 +11,10 @@ grade: stable
 confinement: strict
 base: core20
 
+package-repositories:
+ - type: apt
+   ppa: deadsnakes/ppa
+
 plugs:
   ansible:
     interface: personal-files

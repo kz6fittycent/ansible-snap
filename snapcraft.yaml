@@ -8,69 +8,16 @@ description: |
     like zero-downtime rolling updates with load balancers.
     
 grade: stable 
-confinement: strict
-base: core22
+confinement: classic
+base: core20
 
 package-repositories:
  - type: apt
    ppa: deadsnakes/ppa
 
-plugs:
-  ansible:
-    interface: personal-files
-    write:
-      - $HOME/.ansible/roles
-      - $HOME/$SNAP_USER_COMMON
-      - $HOME/$SNAP_USER_CURRENT
-    read:
-      - $HOME/.ansible/roles
-      - $HOME/$SNAP_USER_COMMON
-      - $HOME/$SNAP_USER_CURRENT
-  ansible:
-    interface: personal-files
-    read:
-      - $HOME/$SNAP_USER_COMMON
-      - $HOME/$SNAP_USER_CURRENT
-  ansible:
-    interface: personal-files
-    read:
-      - $HOME/.ansible/roles
-      - $HOME/$SNAP_USER_COMMON
-      - $HOME/$SNAP_USER_CURRENT       
-    write:
-      - $HOME/.ansible/roles
-      - $HOME/$SNAP_USER_COMMON
-      - $HOME/$SNAP_USER_CURRENT      
-
 apps:
-  ansible:
-    command: bin/ansible
-  ansible-config:
-    command: bin/ansible-config
-  ansible-console:
-    command: bin/ansible-console
-  ansible-doc:
-    command: bin/ansible-doc
-  ansible-galaxy:
-    command: bin/ansible-galaxy
-  ansible-inventory:
-    command: bin/ansible-inventory
-  ansible-playbook:
-    command: bin/ansible-playbook
-  ansible-pull:
-    command: bin/ansible-pull
-  ansible-test:
-    command: bin/ansible-test
-  ansible-vault:
-    command: bin/ansible-vault
-    environment: 
-      LC_ALL: C.UTF-8
-    plugs:
-      - home
-      - network
-      - mount-observe
-      - system-files
-      - personal-files
+ansible: 
+  command: usr/bin/ansible
      
 parts: 
   ansible:

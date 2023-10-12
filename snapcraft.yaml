@@ -25,7 +25,7 @@ parts:
   ansible:
     source: https://github.com/ansible/ansible
     source-type: git
-    source-branch: stable-2.10
+    source-branch: stable-2.16
     plugin: python
     requirements: [requirements.txt]
     
@@ -34,12 +34,14 @@ parts:
       snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
       
     build-packages:
-      - python3
+      - python3.11
       - python3-pip
+      - pipx
+      - python3.11-venv
       - software-properties-common
       
     stage-packages:
-      - python3
+      - python3.11
       - python3-pip      
       - software-properties-common
       - python3-jinja2

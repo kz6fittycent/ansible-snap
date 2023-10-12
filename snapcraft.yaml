@@ -16,9 +16,11 @@ package-repositories:
    ppa: deadsnakes/ppa
 
 apps:
-ansible: 
-  command: usr/bin/ansible
-     
+  ansible: 
+    command: bin/ansible
+    environment: 
+      LC_ALL: C.UTF-8
+      
 parts: 
   ansible:
     source: https://github.com/ansible/ansible

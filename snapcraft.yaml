@@ -45,12 +45,18 @@ parts:
       - python3-setuptools
       - python3-cryptography
       - python3-jmespath
+<<<<<<< HEAD
       - ieee-data 
+=======
+>>>>>>> master
       - python3-argcomplete 
       - python3-kerberos 
       - python3-libcloud 
       - python3-lockfile
+<<<<<<< HEAD
       - python3-netaddr 
+=======
+>>>>>>> master
       - python3-ntlm-auth 
       - python3-packaging 
       - python3-pycryptodome 

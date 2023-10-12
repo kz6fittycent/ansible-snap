@@ -56,7 +56,6 @@ parts:
       - python3-pycryptodome 
       - python3-requests-kerberos
       - python3-requests-ntlm 
-      - python3-resolvelib 
       - python3-selinux 
       - python3-simplejson 
       - python3-winrm

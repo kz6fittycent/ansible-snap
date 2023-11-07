@@ -17,7 +17,7 @@ package-repositories:
 
 apps:
   ansible: 
-    command: usr/bin/ansible
+    command: $SNAP/.local/bin/ansible-core
     environment: 
       LC_ALL: C.UTF-8
       
@@ -25,7 +25,7 @@ parts:
   ansible:
     source: https://github.com/ansible/ansible
     source-type: git
-    source-branch: stable-2.10
+    source-branch: stable-2.11
     plugin: python
     requirements: [requirements.txt]
     
@@ -33,10 +33,11 @@ parts:
       snapcraftctl pull
       snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
       
-#    override-build: |
-#      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/bin/
-#      cd $SNAPCRAFT_PART_INSTALL/usr/bin/
-#      pipx install --include-deps ansible-core==2.10.17
+    override-build: |
+      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/bin/
+      cd $SNAPCRAFT_PART_INSTALL/usr/bin/
+      pipx install --include-deps ansible-core==2.11
+      pipx ensurepath
       
     build-packages:
       - python3.11
